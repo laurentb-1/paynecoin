@@ -46,29 +46,20 @@ python paynecoin/api.py -p 5001
 Our implementation serves the blockchain as an API with which we can interact using HTTP requests (```GET```, ```POST```).
 An easy way to manage these requests interactively is to use a tool like [Postman](https://www.postman.com/downloads/).
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-wgsn{border-color:inherit;font-family:Arial, Helvetica, sans-serif !important;;text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
-<table class="tg">
+<table>
 <thead>
   <tr>
     <th>request</th>
     <th>method</th>
     <th>body</th>
-    <th>explanation</th>
+    <th>description</th>
     <th>example</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td>/nodes/register</td>
-    <td>POST<br></td>
+    <td><pre>/nodes/register</pre></td>
+    <td><pre>POST</pre><br></td>
     <td>JSON list of URLs</td>
     <td>register a list of new nodes in the form of URLs</td>
     <td><pre>{<br>    "nodes": [<br>        "http://localhost:5000",<br>        "http://localhost:5001"<br>    ]<br>}</pre></td>
