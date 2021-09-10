@@ -58,27 +58,27 @@ An easy way to manage these requests interactively is to use a tool like [Postma
 <table class="tg">
 <thead>
   <tr>
-    <th class="tg-0pky">request</th>
-    <th class="tg-0pky">method</th>
-    <th class="tg-0pky">body</th>
-    <th class="tg-0pky">explanation</th>
-    <th class="tg-0pky">example</th>
+    <th>request</th>
+    <th>method</th>
+    <th>body</th>
+    <th>explanation</th>
+    <th>example</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky">/nodes/register</td>
-    <td class="tg-wgsn">POST<br></td>
-    <td class="tg-0pky">JSON list of URLs</td>
-    <td class="tg-0pky">register a list of new nodes in the form of URLs</td>
-    <td class="tg-0pky">{<br>    "nodes": [<br>        "http://localhost:5000",<br>        "http://localhost:5001"<br>    ]<br>}</td>
+    <td>/nodes/register</td>
+    <td>POST<br></td>
+    <td>JSON list of URLs</td>
+    <td>register a list of new nodes in the form of URLs</td>
+    <td><pre>{<br>    "nodes": [<br>        "http://localhost:5000",<br>        "http://localhost:5001"<br>    ]<br>}</pre></td>
   </tr>
   <tr>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </tbody>
 </table>
