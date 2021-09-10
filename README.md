@@ -51,25 +51,46 @@ An easy way to manage these requests interactively is to use a tool like [Postma
   <tr>
     <th>request</th>
     <th>method</th>
-    <th>body</th>
     <th>description</th>
-    <th>example</th>
+    <th>body</th>
+    <th>body example</th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td><pre>/nodes/register</pre></td>
     <td><pre>POST</pre><br></td>
-    <td>JSON list of URLs</td>
     <td>register a list of new nodes in the form of URLs</td>
+    <td>JSON list of URLs</td>
     <td><pre>{<br>    "nodes": [<br>        "http://localhost:5000",<br>        "http://localhost:5001"<br>    ]<br>}</pre></td>
   </tr>
   <tr>
+    <td><pre>/nodes/resolve</pre></td>
+    <td><pre>GET</pre><br></td>
+    <td>implement consensus algorithm to resolve conflicts</td>
+    <td>NA</td>
     <td></td>
+  </tr>
+  <tr>
+    <td><pre>/chain</pre></td>
+    <td><pre>GET</pre><br></td>
+    <td>return full blockchain</td>
+    <td>NA</td>
     <td></td>
+  </tr>
+  <tr>
+    <td><pre>/mine</pre></td>
+    <td><pre>GET</pre><br></td>
+    <td>mine a new block</td>
+    <td>NA</td>
     <td></td>
-    <td></td>
-    <td></td>
+  </tr>
+  <tr>
+    <td><pre>/transactions/new</pre></td>
+    <td><pre>POST</pre><br></td>
+    <td>create a new transaction</td>
+    <td>JSON list of transaction parameters</td>
+    <td><pre>{<br>    "sender": "alvaro",<br>    "recipient": "jonathan",<br>    "amount": 42<br>}</pre></td>
   </tr>
 </tbody>
 </table>
