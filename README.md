@@ -30,6 +30,7 @@ Make sure you are located in the project's directory (e.g. ```cd ~/paynecoin```)
 poetry shell
 ```
 (Keep in mind you can exit this shell with ```poetry exit```.)
+
 2. Initialize a node in the development server using
 ```sh
 python paynecoin/api.py
@@ -45,7 +46,39 @@ python paynecoin/api.py -p 5001
 Our implementation serves the blockchain as an API with which we can interact using HTTP requests (```GET```, ```POST```).
 An easy way to manage these requests interactively is to use a tool like [Postman](https://www.postman.com/downloads/).
 
-| request               | method     | body              | explanation                                      | example                                                                                               |
-|-----------------------|------------|-------------------|--------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| ```/nodes/register``` | ```POST``` | JSON list of URLs | register a list of new nodes in the form of URLs | ```json {     "nodes": [         "http://localhost:5000",         "http://localhost:5001"     ] } ``` |
-|                       |            |                   |                                                  |                                                                                                       |
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-wgsn{border-color:inherit;font-family:Arial, Helvetica, sans-serif !important;;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">request</th>
+    <th class="tg-0pky">method</th>
+    <th class="tg-0pky">body</th>
+    <th class="tg-0pky">explanation</th>
+    <th class="tg-0pky">example</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">/nodes/register</td>
+    <td class="tg-wgsn">POST<br></td>
+    <td class="tg-0pky">JSON list of URLs</td>
+    <td class="tg-0pky">register a list of new nodes in the form of URLs</td>
+    <td class="tg-0pky">{<br>    "nodes": [<br>        "http://localhost:5000",<br>        "http://localhost:5001"<br>    ]<br>}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+  </tr>
+</tbody>
+</table>
