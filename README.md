@@ -9,7 +9,7 @@ You will also need Python >3.5 (see below).
 
 ### Python & Poetry
 
-In order to be able to run the code, you'll need to make sure you have a working Python 3.5+ installation.
+In order to be able to run the code you'll need to make sure you have a working Python 3.5+ installation.
 If you already know how to manage your Python environments and packages, you can skip this section. Otherwise, we'll use [poetry](https://python-poetry.org/) to easily manage packages and environments.
 1. Follow the [installation instructions](https://python-poetry.org/docs/#installation) to set it up in your machine. You can verify that the installation was successful by checking that running the following code doesn't produce any errors:
 ```sh
@@ -29,7 +29,7 @@ Make sure you are located in the project's directory (e.g. ```cd ~/paynecoin```)
 ```sh
 poetry shell
 ```
-(Keep in mind you can exit this shell with ```poetry exit```.)
+(Keep in mind you can exit this shell like any other: simply type ```exit```.)
 
 2. Initialize a node in the development server using
 ```sh
