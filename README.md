@@ -4,6 +4,8 @@ This repository contains the code for running a toy blockchain that allows you t
 
 # Install
 
+## Clone repository
+
 Simply clone this repository to your machine.
 For example, you can clone this repository to your home directory by running
 ```sh
@@ -12,14 +14,15 @@ git clone git@github.com:acarril/paynecoin.git # SSH (recommended), or
 git clone https://github.com/acarril/paynecoin.git # HTTPS
 ```
 
-You will also need Python >3.5 (see below).
+## Python
 
-## Python & Poetry
+You will also need a working Python 3.5+ installation. I assume you already have one working, but if not, I recommend installing [Anaconda](https://www.anaconda.com/products/individual).
 
-In order to be able to run the code you'll need to make sure you have a working Python 3.5+ installation.
-If you already know how to manage your Python environments and packages, you can skip this section. Just make sure you install the dependencies listed in [`pyproject.toml`](pyproject.toml).
+If you already know how to manage your Python environments and packages, you can skip the following subsection. Just make sure you install the dependencies listed in [`pyproject.toml`](pyproject.toml).
 
-Otherwise, we'll use [Poetry](https://python-poetry.org/) to easily manage packages and environments.
+### Python & Poetry
+
+We will use [Poetry](https://python-poetry.org/) to easily manage packages and environments.
 1. Follow the [installation instructions](https://python-poetry.org/docs/#installation) to set Poetry up in your machine. You can verify that the installation was successful by running the following command without any errors:
 ```sh
 poetry --version
@@ -30,29 +33,21 @@ cd ~/paynecoin
 poetry install
 ```
 
-## Running the blockchain
+# Running the blockchain
 
-Make sure you are located in the project's directory (e.g. ```cd ~/paynecoin```).
-
-1. Activate the project's virtual environment by spawning a new shell with
+Navigate to the project's directory (e.g. `cd ~/paynecoin`) and activate the project's Python virtual environment by spawning a new shell:
 ```sh
 poetry shell
 ```
-(Keep in mind you can exit this shell like any other: simply type ```exit```.)
+Everything going forward will assume you are located in the project's directory and initialized its corresponding Poetry shell.
 
-2. Initialize a node in the development server using
-```sh
-python paynecoin/api.py
-```
-This initializes a node in the default port, ```5000```.
-You can initialize additional nodes in other ports by using the ```-p <port>``` option. For example,
-```sh
-python paynecoin/api.py -p 5001
-```
+## Initializing nodes
 
-### Initializing nodes
+Nodes are virtual representations of the agents that will be interacting with the blockchain. First they have to be initialized, at which point they will be assigned a port in the local host (e.g. `http://localhost:5000/`).
 
-A single can be directly initialized by running
+### Manual node initialization
+
+Initialize a node in the development server with
 ```sh
 python paynecoin/api.py
 ```
@@ -62,16 +57,32 @@ You can initialize additional nodes in other ports by using the `-p <port>` opti
 python paynecoin/api.py -p 5001
 ```
 
-Additionally, I wrote a simple shell script that makes it easier to initialize and terminate nodes in bulk.
-The script is in `tests/payne_nodes.sh`.
-- **Initialize** a sequence of nodes associated to ports `5000, ..., 5000+(i-1)` by running [i], where `[i]` is some integer.
+### Bulk node initialization
+
+I wrote a simple auxiliary shell script that makes it easier to initialize and terminate nodes in bulk.
+The script is in [`tests/payne_nodes.sh`](tests/payne_nodes.sh).
+- **Initialize** a sequence of nodes associated to ports `5000, ..., 5000+(i-1)` by running
+```sh
+bash tests/payne_nodes.sh init [i]
+```
+where `[i]` is some integer (if no integer is specified, it will initialize one node in port `5000`).
 For example, you can initialize three nodes associated to ports `5000`, `5001`, and `5002` by running
 ```sh
-tests/payne_nodes.sh init 3
+bash tests/payne_nodes.sh init 3
 ```
-- **List** the jobs associated to the running nodes using `tests/payne_nodes.sh list`.
-- **Kill**  all the initialized nodes using `tests/payne_nodes.sh kill`
+- **List** the jobs associated to the running nodes using `bash tests/payne_nodes.sh list`.
+- **Kill**  all the initialized nodes using `bash tests/payne_nodes.sh kill`
 
+#### Note
+
+Node instances are simply Python processes, which can be managed with the usual Unix tools. For example, you can list the processes running the nodes with
+```sh
+ps ax | grep paynecoin/api.py | grep -v grep
+```
+You can kill these processes using, for example,
+```sh
+kill $(ps ax | grep paynecoin/api.py | grep -v grep | awk '{print $1}')
+```
 
 ## Interacting with the blockchain
 
@@ -126,14 +137,3 @@ An easy way to manage these requests interactively is to use a tool like [Postma
   </tr>
 </tbody>
 </table>
-
-### Terminating the Flask servers
-
-You can list the processes running the servers with
-```sh
-ps ax | grep paynecoin/api.py | grep -v grep
-```
-
-```sh
-kill $(ps ax | grep paynecoin/api.py | grep -v grep | awk '{print $1}')
-```
