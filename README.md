@@ -10,6 +10,7 @@ This repository contains the code for running a toy blockchain that allows you t
     - [2.1.1. Manual node initialization](#211-manual-node-initialization)
     - [2.1.2. Bulk node initialization](#212-bulk-node-initialization)
   - [2.2. Interacting with the blockchain](#22-interacting-with-the-blockchain)
+    - [2.2.1. Simulating transactions](#221-simulating-transactions)
 
 # 1. Install
 
@@ -144,3 +145,11 @@ An easy way to manage these requests interactively is to use a tool like [Postma
   </tr>
 </tbody>
 </table>
+
+### 2.2.1. Simulating transactions
+
+The script [`tests/simulation.py`](tests/simulation.py) contains some functions and code to easily initialize and manage the blockchain using Python.
+Take a look at this file and the functions within to register nodes, mine blocks, post transactions and check the blockchain.
+
+[WORK IN PROGRESS]
+
