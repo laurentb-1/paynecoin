@@ -93,7 +93,7 @@ kill $(ps ax | grep paynecoin/api.py | grep -v grep | awk '{print $1}')
 
 ## 2.2. Interacting with the blockchain
 
-Our implementation serves the blockchain as an API with which we can interact using HTTP requests (```GET```, ```POST```).
+This implementation serves the blockchain as an API with which we can interact using HTTP requests (i.e. ```GET``` and ```POST```).
 An easy way to manage these requests interactively is to use a tool like [Postman](https://www.postman.com/downloads/).
 
 <table>
