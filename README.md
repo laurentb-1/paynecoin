@@ -2,11 +2,20 @@
 
 This repository contains the code for running a toy blockchain that allows you to make transactions and mine `paynecoin`, a made up cryptocurrency for educational purposes.
 
+- [`paynecoin` (PYN)](#paynecoin-pyn)
+- [Install](#install)
+  - [Python](#python)
+    - [Python & Poetry](#python--poetry)
+- [Running the blockchain](#running-the-blockchain)
+  - [Initializing nodes](#initializing-nodes)
+    - [Manual node initialization](#manual-node-initialization)
+    - [Bulk node initialization](#bulk-node-initialization)
+      - [Note](#note)
+  - [Interacting with the blockchain](#interacting-with-the-blockchain)
+
 # Install
 
-## Clone repository
-
-Simply clone this repository to your machine.
+Simply clone this repository to your machine to install.
 For example, you can clone this repository to your home directory by running
 ```sh
 cd ~
@@ -65,7 +74,7 @@ The script is in [`tests/payne_nodes.sh`](tests/payne_nodes.sh).
 ```sh
 bash tests/payne_nodes.sh init [i]
 ```
-where `[i]` is some integer (if no integer is specified, it will initialize one node in port `5000`).
+where `[i]` is an optional integer; if none is specified, the program will initialize a single node in port `5000`.
 For example, you can initialize three nodes associated to ports `5000`, `5001`, and `5002` by running
 ```sh
 bash tests/payne_nodes.sh init 3
