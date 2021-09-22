@@ -5,15 +5,22 @@ This repository contains the code for running a toy blockchain that allows you t
 # Install
 
 Simply clone this repository to your machine.
+For example, you can clone this repository to your home directory by running
+```sh
+cd ~
+git clone git@github.com:acarril/paynecoin.git # SSH (recommended), or
+git clone https://github.com/acarril/paynecoin.git # HTTPS
+```
+
 You will also need Python >3.5 (see below).
 
 ## Python & Poetry
 
 In order to be able to run the code you'll need to make sure you have a working Python 3.5+ installation.
-If you already know how to manage your Python environments and packages, you can skip this section. Just make sure you install the dependencies listed in [`pyproject.toml`](pyproject.toml)
+If you already know how to manage your Python environments and packages, you can skip this section. Just make sure you install the dependencies listed in [`pyproject.toml`](pyproject.toml).
 
-Otherwise, we'll use [poetry](https://python-poetry.org/) to easily manage packages and environments.
-1. Follow the [installation instructions](https://python-poetry.org/docs/#installation) to set it up in your machine. You can verify that the installation was successful by checking that running the following code doesn't produce any errors:
+Otherwise, we'll use [Poetry](https://python-poetry.org/) to easily manage packages and environments.
+1. Follow the [installation instructions](https://python-poetry.org/docs/#installation) to set Poetry up in your machine. You can verify that the installation was successful by running the following command without any errors:
 ```sh
 poetry --version
 ```
