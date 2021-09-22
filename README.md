@@ -2,17 +2,16 @@
 
 This repository contains the code for running a toy blockchain that allows you to make transactions and mine `paynecoin`, a made up cryptocurrency for educational purposes.
 
-- [Install](#install)
-  - [Python](#python)
-    - [Python & Poetry](#python--poetry)
-- [Running the blockchain](#running-the-blockchain)
-  - [Initializing nodes](#initializing-nodes)
-    - [Manual node initialization](#manual-node-initialization)
-    - [Bulk node initialization](#bulk-node-initialization)
-      - [Note](#note)
-  - [Interacting with the blockchain](#interacting-with-the-blockchain)
+- [1. Install](#1-install)
+  - [1.1. Python](#11-python)
+  - [1.2. Poetry](#12-poetry)
+- [2. Running the blockchain](#2-running-the-blockchain)
+  - [2.1. Initializing nodes](#21-initializing-nodes)
+    - [2.1.1. Manual node initialization](#211-manual-node-initialization)
+    - [2.1.2. Bulk node initialization](#212-bulk-node-initialization)
+  - [2.2. Interacting with the blockchain](#22-interacting-with-the-blockchain)
 
-# Install
+# 1. Install
 
 Simply clone this repository to your machine to install.
 For example, you can clone this repository to your home directory by running
@@ -22,13 +21,13 @@ git clone git@github.com:acarril/paynecoin.git # SSH (recommended), or
 git clone https://github.com/acarril/paynecoin.git # HTTPS
 ```
 
-## Python
+## 1.1. Python
 
 You will also need a working Python 3.5+ installation. I assume you already have one working, but if not, I recommend installing [Anaconda](https://www.anaconda.com/products/individual).
 
 If you already know how to manage your Python environments and packages, you can skip the following subsection. Just make sure you install the dependencies listed in [`pyproject.toml`](pyproject.toml).
 
-### Python & Poetry
+## 1.2. Poetry
 
 We will use [Poetry](https://python-poetry.org/) to easily manage packages and environments.
 1. Follow the [installation instructions](https://python-poetry.org/docs/#installation) to set Poetry up in your machine. You can verify that the installation was successful by running the following command without any errors:
@@ -41,7 +40,7 @@ cd ~/paynecoin
 poetry install
 ```
 
-# Running the blockchain
+# 2. Running the blockchain
 
 Navigate to the project's directory (e.g. `cd ~/paynecoin`) and activate the project's Python virtual environment by spawning a new shell:
 ```sh
@@ -49,11 +48,11 @@ poetry shell
 ```
 Everything going forward will assume you are located in the project's directory and initialized its corresponding Poetry shell.
 
-## Initializing nodes
+## 2.1. Initializing nodes
 
 Nodes are virtual representations of the agents that will be interacting with the blockchain. First they have to be initialized, at which point they will be assigned a port in the local host (e.g. `http://localhost:5000/`).
 
-### Manual node initialization
+### 2.1.1. Manual node initialization
 
 Initialize a node in the development server with
 ```sh
@@ -65,7 +64,7 @@ You can initialize additional nodes in other ports by using the `-p <port>` opti
 python paynecoin/api.py -p 5001
 ```
 
-### Bulk node initialization
+### 2.1.2. Bulk node initialization
 
 I wrote a simple auxiliary shell script that makes it easier to initialize and terminate nodes in bulk.
 The script is in [`tests/payne_nodes.sh`](tests/payne_nodes.sh).
@@ -81,7 +80,7 @@ bash tests/payne_nodes.sh init 3
 - **List** the jobs associated to the running nodes using `bash tests/payne_nodes.sh list`.
 - **Kill**  all the initialized nodes using `bash tests/payne_nodes.sh kill`
 
-#### Note
+#### Note <!-- omit in toc -->
 
 Node instances are simply Python processes, which can be managed with the usual Unix tools. For example, you can list the processes running the nodes with
 ```sh
@@ -92,7 +91,7 @@ You can kill these processes using, for example,
 kill $(ps ax | grep paynecoin/api.py | grep -v grep | awk '{print $1}')
 ```
 
-## Interacting with the blockchain
+## 2.2. Interacting with the blockchain
 
 Our implementation serves the blockchain as an API with which we can interact using HTTP requests (```GET```, ```POST```).
 An easy way to manage these requests interactively is to use a tool like [Postman](https://www.postman.com/downloads/).
