@@ -1,8 +1,7 @@
-# `paynecoin` (PYN)
+# `paynecoin` (PYN) <!-- omit in toc -->
 
 This repository contains the code for running a toy blockchain that allows you to make transactions and mine `paynecoin`, a made up cryptocurrency for educational purposes.
 
-- [`paynecoin` (PYN)](#paynecoin-pyn)
 - [Install](#install)
   - [Python](#python)
     - [Python & Poetry](#python--poetry)
