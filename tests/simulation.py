@@ -6,9 +6,9 @@ from hashlib import sha256
 
 def req_endpoint(endpoint, port=5000, data=None):
     # Check valid request
-    get_reqs = ['/nodes/resolve', '/chain', 'mine']
+    get_reqs = ['/nodes/resolve', '/chain', '/mine']
     post_reqs = ['/nodes/register', '/transactions/new']
-    if endpoint not in (get_reqs and post_reqs):
+    if endpoint not in get_reqs and endpoint not in post_reqs:
         print('invalid request')
         return -1
     # Determine request address and method
@@ -16,7 +16,11 @@ def req_endpoint(endpoint, port=5000, data=None):
     url = f'{base_url}{endpoint}'
     is_post = any(kwd in endpoint for kwd in post_reqs)
     if is_post:
-        req = requests.post(url, json=data)
+        if data is None:
+            print('POST requests required data')
+            return -1
+        else:
+            req = requests.post(url, json=data)
     else:
         req = requests.get(url)
     return req.json()
@@ -32,7 +36,14 @@ def simulate_transaction(sender=False, recipient=False, amount=False):
     }
     return transaction
 
-req_endpoint('/nodes/register')
-req_endpoint('/transactions/new', data=simulate_transaction('jonathan', 'alvaro', 42))
-req_endpoint('/mine')
+
+# Interact with BC
+# NOTE: initialize nodes fist e.g. using `bash tests/payne_nodes.sh init 2`
+nodes = {
+    'nodes': [f'http://localhost:{i}' for i in range(5000, 5002)]
+}
+req_endpoint('/nodes/register', port=5000, data=nodes)
 req_endpoint('/chain')
+req_endpoint('/transactions/new', data=simulate_transaction('sifan', 'alvaro', 42))
+req_endpoint('/mine')
+req_endpoint('/nodes/resolve')
