@@ -2,7 +2,11 @@
 
 This repository contains the code for running a toy blockchain that allows you to make transactions and mine `paynecoin`, a made up cryptocurrency for educational purposes.
 
-- [1. Install](#1-install)
+#### Note
+
+All instructions in this repository assume you have access to a Unix machine (macOS or Linux).
+
+- [1. Installation](#1-installation)
   - [1.1. Python](#11-python)
   - [1.2. Poetry](#12-poetry)
 - [2. Running the blockchain](#2-running-the-blockchain)
@@ -12,7 +16,7 @@ This repository contains the code for running a toy blockchain that allows you t
   - [2.2. Interacting with the blockchain](#22-interacting-with-the-blockchain)
     - [2.2.1. Simulating transactions](#221-simulating-transactions)
 
-# 1. Install
+# 1. Installation
 
 Simply clone this repository to your machine to install.
 For example, you can clone this repository to your home directory by running
