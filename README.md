@@ -141,9 +141,9 @@ An easy way to manage these requests interactively is to use a tool like [Postma
     <td></td>
   </tr>
   <tr>
-    <td><pre>/transactions/new</pre></td>
+    <td><pre>/transaction</pre></td>
     <td><pre>POST</pre><br></td>
-    <td>create a new transaction</td>
+    <td>register a new transaction</td>
     <td>JSON list of transaction parameters</td>
     <td><pre>{<br>    "sender": "alvaro",<br>    "recipient": "jonathan",<br>    "amount": 42<br>}</pre></td>
   </tr>
@@ -156,7 +156,7 @@ An easy way to manage these requests interactively is to use a tool like [Postma
   </tr>
   <tr>
     <td><pre>/wallets/{uuid}</pre></td>
-    <td><pre>POST</pre><br></td>
+    <td><pre>GET</pre><br></td>
     <td>get wallet of {uuid}</td>
     <td></td>
     <td></td>
