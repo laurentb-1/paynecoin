@@ -7,16 +7,15 @@ import requests
 
 class Wallets:
     def __init__(self):
-        self.wallets = []
+        self.wallets = {}
 
-    def new_wallet(self, uuid='foo'):
+    def wallet_create(self, uuid='foo'):
         transactions = []
         wallet = {
-            'uuid': uuid,
             'transactions': transactions,
             'balance': sum(transactions)
         }
-        self.wallets.append(wallet)
+        self.wallets[uuid] = wallet
         return self.wallets
 
 class Blockchain:
