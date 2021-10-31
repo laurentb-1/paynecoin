@@ -9,6 +9,15 @@ class Wallets:
     def __init__(self):
         self.wallets = {}
 
+    def wallets_get(self, uuid):
+        if uuid is not None:
+            try:
+                return self.wallets[uuid]
+            except KeyError:
+                return None
+        else:
+            return self.wallets
+
     def wallet_create(self, uuid='foo'):
         transactions = []
         wallet = {

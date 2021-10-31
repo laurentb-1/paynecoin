@@ -43,6 +43,12 @@ def mine():
     }
     return jsonify(response), 200
 
+@app.route('/wallets/', methods=['GET'], defaults={'uuid': None}, strict_slashes=False)
+@app.route('/wallets/<uuid>', methods=['GET'], strict_slashes=False)
+def route_wallets_get(uuid):
+    response = wallets.wallets_get(uuid=uuid)
+    return jsonify(response)
+
 @app.route('/wallets/new/', methods=['GET'], defaults={'uuid': None}, strict_slashes=False)
 @app.route('/wallets/new/<uuid>', methods=['GET'], strict_slashes=False)
 def route_wallets_new(uuid):
