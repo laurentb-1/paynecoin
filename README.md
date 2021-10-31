@@ -69,6 +69,12 @@ You can initialize additional nodes in other ports by using the `-p <port>` opti
 python paynecoin/api.py -p 5001
 ```
 
+Each node is assigned an automatically-generated node UUID. However, you can specify a custom UUID for the node using the `-u <uuid>` option. For example,
+```sh
+python paynecoin/api.py -u alice
+```
+Whenever a node mines a block, the reward will be associated to this node UUID.
+
 ### 2.1.2. Bulk node initialization
 
 I wrote a simple auxiliary shell script that makes it easier to initialize and terminate nodes in bulk.
