@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
 # Generate a globally unique address for this node
-node_identifier = str(uuid4()).replace('-', '')
+node_identifier = str(uuid4().hex)
 
 # Instantiate the Blockchain and Wallets
 blockchain = Blockchain()
@@ -24,11 +24,14 @@ def mine():
 
     # We must receive a reward for finding the proof.
     # The sender is "0" to signify that this node has mined a new coin.
+    sender = '0'
+    amount = 1
     blockchain.new_transaction(
-        sender="0",
+        sender=sender,
         recipient=node_identifier,
-        amount=1,
+        amount=amount,
     )
+    wallets.wallet_update(node_identifier, amount)
 
     # Forge the new Block by adding it to the chain
     previous_hash = blockchain.hash(last_block)
@@ -77,6 +80,10 @@ def new_transaction():
 
     # Create a new Transaction
     index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
+
+    # Update wallets
+    wallets.wallet_update(values['sender'], -values['amount'])
+    wallets.wallet_update(values['recipient'], values['amount'])
 
     response = {'message': f'Transaction will be added to Block {index}'}
     return jsonify(response), 201
