@@ -5,6 +5,20 @@ from urllib.parse import urlparse
 import requests
 
 
+class Wallets:
+    def __init__(self):
+        self.wallets = []
+
+    def new_wallet(self, uuid='foo'):
+        transactions = []
+        wallet = {
+            'uuid': uuid,
+            'transactions': transactions,
+            'balance': sum(transactions)
+        }
+        self.wallets.append(wallet)
+        return self.wallets
+
 class Blockchain:
     def __init__(self):
         self.current_transactions = []
