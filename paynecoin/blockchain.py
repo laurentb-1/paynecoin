@@ -18,7 +18,7 @@ class Wallets:
         else:
             return self.wallets
 
-    def wallet_create(self, uuid='foo'):
+    def wallet_create(self, uuid):
         transactions = []
         wallet = {
             'transactions': transactions,
@@ -31,7 +31,8 @@ class Wallets:
         try:
             wallet = self.wallets[uuid]
         except KeyError:
-            return None
+            self.wallet_create(uuid)
+            wallet = self.wallets[uuid]
         wallet['transactions'].append(amount)
         wallet['balance'] = sum(wallet['transactions'])
         return wallet
