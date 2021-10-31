@@ -4,6 +4,8 @@ from blockchain import Blockchain
 from blockchain import Wallets
 from uuid import uuid4
 
+MINING_REWARD = 1
+
 # Instantiate the Node
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
@@ -11,7 +13,6 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 # Instantiate the Blockchain and Wallets
 blockchain = Blockchain()
 wallets = Wallets()
-
 
 @app.route('/mine', methods=['GET'])
 def mine():
@@ -22,7 +23,7 @@ def mine():
     # We must receive a reward for finding the proof.
     # The sender is "0" to signify that this node has mined a new coin.
     sender = '0'
-    amount = 1
+    amount = MINING_REWARD
     blockchain.new_transaction(
         sender=sender,
         recipient=node_uuid,
