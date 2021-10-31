@@ -8,9 +8,6 @@ from uuid import uuid4
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
-# Generate a globally unique address for this node
-node_identifier = str(uuid4().hex)
-
 # Instantiate the Blockchain and Wallets
 blockchain = Blockchain()
 wallets = Wallets()
@@ -28,10 +25,10 @@ def mine():
     amount = 1
     blockchain.new_transaction(
         sender=sender,
-        recipient=node_identifier,
+        recipient=node_uuid,
         amount=amount,
     )
-    wallets.wallet_update(node_identifier, amount)
+    wallets.wallet_update(node_uuid, amount)
 
     # Forge the new Block by adding it to the chain
     previous_hash = blockchain.hash(last_block)
@@ -139,7 +136,10 @@ if __name__ == '__main__':
 
     parser = ArgumentParser()
     parser.add_argument('-p', '--port', default=5000, type=int, help='port to listen on')
+    parser.add_argument('-u', '--uuid', default=None, type=str, help='unique identifier for node')
     args = parser.parse_args()
     port = args.port
+    # Generate a globally unique address for this node
+    node_uuid = args.uuid if args.uuid is not None else str(uuid4().hex)
 
     app.run(host='0.0.0.0', port=port)
