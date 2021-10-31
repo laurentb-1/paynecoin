@@ -1,6 +1,7 @@
 import requests
 from flask import Flask, jsonify, request
 from blockchain import Blockchain
+from blockchain import Wallets
 from uuid import uuid4
 
 # Instantiate the Node
@@ -10,8 +11,9 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 # Generate a globally unique address for this node
 node_identifier = str(uuid4()).replace('-', '')
 
-# Instantiate the Blockchain
+# Instantiate the Blockchain and Wallets
 blockchain = Blockchain()
+wallets = Wallets()
 
 
 @app.route('/mine', methods=['GET'])
@@ -41,6 +43,13 @@ def mine():
     }
     return jsonify(response), 200
 
+
+@app.route('/wallets/new/', methods=['GET'], defaults={'uuid': None}, strict_slashes=False)
+@app.route('/wallets/new/<uuid>', methods=['GET'], strict_slashes=False)
+def route_wallets_new(uuid):
+    uuid = uuid if uuid is not None else str(uuid4().hex)
+    response = wallets.new_wallet(uuid=uuid)
+    return jsonify(response)
 
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
