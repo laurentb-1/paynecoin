@@ -107,8 +107,8 @@ An easy way to manage these requests interactively is to use a tool like [Postma
     <th>request</th>
     <th>method</th>
     <th>description</th>
-    <th>body</th>
-    <th>body example</th>
+    <th>request body</th>
+    <th>request body example</th>
   </tr>
 </thead>
 <tbody>
@@ -146,6 +146,20 @@ An easy way to manage these requests interactively is to use a tool like [Postma
     <td>create a new transaction</td>
     <td>JSON list of transaction parameters</td>
     <td><pre>{<br>    "sender": "alvaro",<br>    "recipient": "jonathan",<br>    "amount": 42<br>}</pre></td>
+  </tr>
+  <tr>
+    <td><pre>/wallets</pre></td>
+    <td><pre>GET</pre><br></td>
+    <td>get all wallets</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><pre>/wallets/{uuid}</pre></td>
+    <td><pre>POST</pre><br></td>
+    <td>get wallet of {uuid}</td>
+    <td></td>
+    <td></td>
   </tr>
 </tbody>
 </table>
