@@ -18,6 +18,15 @@ class Wallets:
         self.wallets[uuid] = wallet
         return self.wallets
 
+    def wallet_update(self, uuid, amount=0):
+        try:
+            wallet = self.wallets[uuid]
+        except KeyError:
+            return None
+        wallet['transactions'].append(amount)
+        wallet['balance'] = sum(wallet['transactions'])
+        return wallet
+
 class Blockchain:
     def __init__(self):
         self.current_transactions = []

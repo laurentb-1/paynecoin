@@ -50,6 +50,15 @@ def route_wallets_new(uuid):
     response = wallets.wallet_create(uuid=uuid)
     return jsonify(response)
 
+@app.route('/wallets/update/<uuid>', methods=['GET'])
+def route_wallets_update(uuid):
+    response = {
+        'message': "Wallet updated",
+        'uuid': uuid,
+        'wallet': wallets.wallet_update(uuid)
+    }
+    return jsonify(response)
+
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
     values = request.get_json()
