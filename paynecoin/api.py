@@ -113,6 +113,10 @@ def register_nodes():
     }
     return jsonify(response), 201
 
+@app.route('/nodes/register', methods=['GET'])
+def register_nodes_get():
+    response = list(blockchain.nodes)
+    return jsonify(response), 201
 
 @app.route('/nodes/resolve', methods=['GET'])
 def consensus():

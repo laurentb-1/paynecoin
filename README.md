@@ -125,6 +125,13 @@ An easy way to manage these requests interactively is to use a tool like [Postma
     <td>JSON list of URLs</td>
     <td><pre>{<br>    "nodes": [<br>        "http://localhost:5000",<br>        "http://localhost:5001"<br>    ]<br>}</pre></td>
   </tr>
+   <tr>
+    <td><pre>/nodes/register</pre></td>
+    <td><pre>GET</pre><br></td>
+    <td>list registered nodes</td>
+    <td>NA</td>
+    <td></td>
+  </tr>
   <tr>
     <td><pre>/nodes/resolve</pre></td>
     <td><pre>GET</pre><br></td>
