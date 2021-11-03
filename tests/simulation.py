@@ -1,14 +1,13 @@
 import requests
-import json
 import secrets
 from random import randrange
 from hashlib import sha256
 
 def req_endpoint(endpoint, port=5000, data=None):
     # Check valid request
-    get_reqs = ['/nodes/resolve', '/chain', '/mine']
-    post_reqs = ['/nodes/register', '/transactions/new']
-    if endpoint not in get_reqs and endpoint not in post_reqs:
+    get_reqs = ['/nodes/resolve', '/chain', '/mine', '/wallets']
+    post_reqs = ['/nodes/register', '/transaction']
+    if endpoint not in get_reqs + post_reqs:
         print('invalid request')
         return -1
     # Determine request address and method
@@ -35,15 +34,3 @@ def simulate_transaction(sender=False, recipient=False, amount=False):
         'amount': amount
     }
     return transaction
-
-
-# Interact with BC
-# NOTE: initialize nodes fist e.g. using `bash tests/payne_nodes.sh init 2`
-nodes = {
-    'nodes': [f'http://localhost:{i}' for i in range(5000, 5002)]
-}
-req_endpoint('/nodes/register', port=5000, data=nodes)
-req_endpoint('/chain')
-req_endpoint('/transactions/new', data=simulate_transaction('sifan', 'alvaro', 42))
-req_endpoint('/mine')
-req_endpoint('/nodes/resolve')
