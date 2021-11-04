@@ -181,6 +181,5 @@ An easy way to manage these requests interactively is to use a tool like [Postma
 
 The script [`tests/simulation.py`](tests/simulation.py) contains some functions and code to easily initialize and manage the blockchain using Python.
 Take a look at this file and the functions within to register nodes, mine blocks, post transactions and check the blockchain.
-
-[WORK IN PROGRESS]
+Inside the class' modules you can find a video where I explain more details about this script.
 
