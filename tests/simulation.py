@@ -13,7 +13,7 @@ def req_endpoint(endpoint, port=5000, data=None):
         print('invalid request')
         return -1
     # Determine request address and method
-    base_url = f'http://localhost:{port}'
+    base_url = f'http://127.0.0.1:{port}'
     url = f'{base_url}{endpoint}'
     is_post = any(kwd in endpoint for kwd in post_reqs)
     if is_post:
@@ -50,7 +50,7 @@ nodes_dict = dict(zip(nodes_uuids, range(5000, 5000+len(nodes_uuids))))
 
 # Register nodes
 nodes_register_body = {
-    'nodes': [f'http://localhost:{i}' for i in range(5000, 5000+len(nodes_uuids))]
+    'nodes': [f'http://127.0.0.1:{i}' for i in range(5000, 5000+len(nodes_uuids))]
 }
 for node_port in nodes_dict.values():
     req_endpoint('/nodes/register', port=node_port, data=nodes_register_body)
