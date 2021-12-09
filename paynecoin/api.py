@@ -166,6 +166,23 @@ def consensus():
 
     return jsonify(response), 200
 
+@app.route('/nodes/resolve_pos', methods=['GET'])
+def consensus_pos():
+    replaced = blockchain.resolve_conflicts_pos()
+
+    if replaced:
+        response = {
+            'message': 'Our chain was replaced',
+            'new_chain': blockchain.chain
+        }
+    else:
+        response = {
+            'message': 'Our chain is authoritative',
+            'chain': blockchain.chain
+        }
+
+    return jsonify(response), 200
+
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
