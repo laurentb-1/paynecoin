@@ -44,6 +44,37 @@ def mine():
     }
     return jsonify(response), 200
 
+@app.route('/mine_pos', methods=['GET'])
+def mine_pos():
+    # We run the proof of work algorithm to get the next proof...
+    last_block = blockchain.last_block
+    proof = blockchain.proof_of_stake(last_block)
+    
+    # We must receive a reward for finding the proof.
+    # The sender is "0" to signify that this node has mined a new coin.
+    sender = '0'
+    amount = MINING_REWARD
+    blockchain.new_transaction(
+        sender=sender,
+        recipient=node_uuid,
+        amount=amount,
+    )
+    wallets.wallet_update(node_uuid, amount)
+
+    # Forge the new Block by adding it to the chain
+    previous_hash = blockchain.hash(last_block)
+    block = blockchain.new_block(proof, previous_hash)
+
+    response = {
+        'message': "New Block Forged",
+        'index': block['index'],
+        'transactions': block['transactions'],
+        'proof': block['proof'],
+        'previous_hash': block['previous_hash'],
+        'valid':True
+    }
+    return jsonify(response), 200
+
 @app.route('/wallets/', methods=['GET'], defaults={'uuid': None}, strict_slashes=False)
 @app.route('/wallets/<uuid>', methods=['GET'], strict_slashes=False)
 def route_wallets_get(uuid):
